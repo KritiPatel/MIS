@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+// import './App.css';
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+import Sidebar from "./components/layout/Sidebar";
+import EmployeeList from "./components/employeeManage/EmployeeList";
+import Login from "./components/login/Login";
+// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// import { Routes, Route } from "react-router-dom"
+// import Footer from "./components/layout/Footer";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
+  // return (
+  //   <div className="App">
+  //     <header className="App-header">
+  //       <Header></Header>
+  //   </div>
+  // );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Header></Header>
+        <Sidebar></Sidebar>
+        <Routes>
+          <Route path="/emp" element={<EmployeeList />} />
+          <Route path="/login" element={<Login />} />
+
+          <Route path="/a" element={<Footer />} />
+          {/* <Route
+                path="/redirect"
+                element={ <Navigate to="/error-page" /> }
+            /> */}
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
